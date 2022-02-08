@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy
+  def logout
     log_out
     redirect_to login_url
   end
