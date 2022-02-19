@@ -17,6 +17,11 @@
   </div>
 
   <div>
+    <%= form.label :group, style: "disable: block" %>
+    <%= form.collection_select :selected_group_id, Group.all, :id, :name, prompt: '選択してください' %>
+  </div>
+
+  <div>
     <%= form.label :password, style: "display: block" %>
     <%= form.text_field :password %>
   </div>
