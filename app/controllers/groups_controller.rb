@@ -21,8 +21,7 @@ class GroupsController < ApplicationController
 
   # POST /groups or /groups.json
   def create
-    @user = User.find(params[:user_id])
-    @group = @user.groups.new(group_params)
+    @group = Group.new(group_params)
 
     respond_to do |format|
       if @group.save

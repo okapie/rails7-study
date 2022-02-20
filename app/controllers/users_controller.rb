@@ -38,11 +38,8 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    group = Group.find(user_params[:selected_group_id])
-    
     respond_to do |format|
       if @user.update(user_params)
-        @user.groups << group
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -70,6 +67,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :password, :password_confirmation, :email, :selected_group_id)
+      params.require(:user).permit(:name, :password, :password_confirmation, :email)
     end
 end
