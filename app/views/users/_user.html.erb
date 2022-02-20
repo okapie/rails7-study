@@ -5,6 +5,11 @@
   </p>
 
   <p>
+    <strong>Group:</strong>
+    <%= user.selected_group_id.nil? ? "未設定" : Group.find(user.selected_group_id).name %>
+  </p>
+
+  <p>
     <strong>Password:</strong>
     <%= user.password %>
   </p>
