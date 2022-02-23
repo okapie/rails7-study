@@ -12,8 +12,8 @@
   <% end %>
 
   <div>
-    <%= form.label :buyable_id, style: "display: block" %>
-    <%= form.text_field :buyable_id %>
+    <%= form.label :store, style: "display: block" %>
+    <%= form.collection_select :selected_store_id, Store.all, :id, :name, prompt: '選択してください' %>
   </div>
 
   <div>

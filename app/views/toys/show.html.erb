@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @toy %>
+<p>
+  <strong>Store:</strong>
+  <%= @store.selected_store_id.nil? ? "未設定" : Store.find(@toy.selected_store_id).name %>
+</p>
 
 <div>
   <%= link_to "Edit this toy", edit_toy_path(@toy) %> |
