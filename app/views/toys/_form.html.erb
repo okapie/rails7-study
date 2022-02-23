@@ -12,6 +12,11 @@
   <% end %>
 
   <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
     <%= form.label :store, style: "display: block" %>
     <%= form.collection_select :selected_store_id, Store.all, :id, :name, prompt: '選択してください' %>
   </div>
