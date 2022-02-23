@@ -3,12 +3,19 @@
 <h1>Groups</h1>
 
 <div id="groups">
-  <% @groups.each do |group| %>
-    <%= render group %>
-    <p>
-      <%= link_to "Show this group", group %>
-    </p>
-  <% end %>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="2"></th>
+      </tr>
+      <tbody>
+        <% @groups.each do |group| %>
+          <%= render group %>
+        <% end %>
+      </tbody>
+    </thead>
+  </table>
 </div>
 
 <%= link_to "New group", new_group_path %>

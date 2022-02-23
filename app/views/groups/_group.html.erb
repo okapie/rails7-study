@@ -1,7 +1,5 @@
-<div id="<%= dom_id group %>">
-  <p>
-    <strong>Name:</strong>
-    <%= group.name %>
-  </p>
-
-</div>
+<tr>
+  <td><%= group.name %></td>
+  <td><%= link_to "Show", group %></td>
+  <td><%= link_to 'Edit', group %></td>
+</tr>
