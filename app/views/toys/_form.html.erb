@@ -1,0 +1,22 @@
+<%= form_with(model: toy) do |form| %>
+  <% if toy.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(toy.errors.count, "error") %> prohibited this toy from being saved:</h2>
+
+      <ul>
+        <% toy.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :buyable_id, style: "display: block" %>
+    <%= form.text_field :buyable_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
