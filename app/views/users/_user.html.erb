@@ -1,22 +1,10 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
 
-  <p>
-    <strong>Group:</strong>
+<tr>
+  <td><%= user.name %></td>
+  <td>
     <%= user.selected_group_id.nil? ? "未設定" : Group.find(user.selected_group_id).name %>
-  </p>
-
-  <p>
-    <strong>Password:</strong>
-    <%= user.password %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= user.email %>
-  </p>
-
-</div>
+  </td>
+  <td><%= link_to "Show", user %></td>
+  <td><%= link_to 'Edit', user %></td>
+  <td><%= link_to 'Destroy', user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
