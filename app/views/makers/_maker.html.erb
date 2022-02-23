@@ -1,7 +1,6 @@
-<div id="<%= dom_id maker %>">
-  <p>
-    <strong>Name:</strong>
-    <%= maker.name %>
-  </p>
-
-</div>
+<tr>
+  <td><%= maker.name %></td>
+  <td><%= link_to "Show", maker %></td>
+  <td><%= link_to 'Edit', edit_maker_path(maker) %></td>
+  <td><%= link_to 'Destroy', maker_path(maker), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

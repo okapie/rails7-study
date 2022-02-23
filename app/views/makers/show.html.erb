@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @maker %>
+<p>
+  <strong>Name:</strong>
+  <%= @maker.name %>
+</p>
 
 <div>
   <%= link_to "Edit this maker", edit_maker_path(@maker) %> |

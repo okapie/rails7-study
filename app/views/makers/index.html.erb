@@ -3,12 +3,19 @@
 <h1>Makers</h1>
 
 <div id="makers">
-  <% @makers.each do |maker| %>
-    <%= render maker %>
-    <p>
-      <%= link_to "Show this maker", maker %>
-    </p>
-  <% end %>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="3"></th>
+      </tr>
+      <tbody>
+        <% @makers.each do |maker| %>
+          <%= render maker %>
+        <% end %>
+      </tbody>
+    </thead>
+  </table>
 </div>
 
 <%= link_to "New maker", new_maker_path %>
