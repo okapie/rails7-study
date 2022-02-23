@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Makers</h1>
+
+<div id="makers">
+  <% @makers.each do |maker| %>
+    <%= render maker %>
+    <p>
+      <%= link_to "Show this maker", maker %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New maker", new_maker_path %>

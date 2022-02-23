@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :makers
   resources :stores
   resources :toys
   resources :groups
