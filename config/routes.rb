@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :stores
   resources :toys
   resources :groups
   get    '/login',   to: 'sessions#new'
