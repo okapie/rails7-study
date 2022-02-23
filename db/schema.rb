@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_23_072518) do
+ActiveRecord::Schema.define(version: 2022_02_23_074218) do
 
   create_table "groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2022_02_23_072518) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "selected_store_id"
+    t.string "name"
     t.index ["buyable_type", "buyable_id"], name: "index_toys_on_buyable"
   end
 
