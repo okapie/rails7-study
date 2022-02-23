@@ -21,6 +21,13 @@
     <%= form.collection_select :selected_store_id, Store.all, :id, :name, prompt: '選択してください' %>
   </div>
 
+  <%#
+    FIXME: The following error occurred if I don't give buyable_id and buyable_type as a form. 
+      - Mysql2::Error: Column 'buyable_type' cannot be null
+  %>
+  <%= form.hidden_field :buyable_id, value: 1 %>
+  <%= form.hidden_field :buyable_type, value: "Store" %>
+
   <div>
     <%= form.submit %>
   </div>

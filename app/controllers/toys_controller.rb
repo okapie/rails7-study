@@ -25,7 +25,7 @@ class ToysController < ApplicationController
 
     respond_to do |format|
       if @toy.save
-        @toy.stores << Store.find(toy_params[:selected_store_id]) unless toy_params[:selected_store_id].empty?
+        Store.find(toy_params[:selected_store_id]).toys << @toy unless toy_params[:selected_store_id].empty?
 
         format.html { redirect_to toy_url(@toy), notice: "Toy was successfully created." }
         format.json { render :show, status: :created, location: @toy }
@@ -69,6 +69,6 @@ class ToysController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def toy_params
-      params.require(:toy).permit(:buyable_id, :buyable_type, :selected_store_id)
+      params.require(:toy).permit(:name, :buyable_id, :buyable_type, :selected_store_id)
     end
 end

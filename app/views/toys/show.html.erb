@@ -2,7 +2,7 @@
 
 <p>
   <strong>Store:</strong>
-  <%= @store.selected_store_id.nil? ? "未設定" : Store.find(@toy.selected_store_id).name %>
+  <%= @toy.selected_store_id.nil? ? "未設定" : Store.find(@toy.selected_store_id).name %>
 </p>
 
 <div>
