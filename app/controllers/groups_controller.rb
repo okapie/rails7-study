@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[ show edit update destroy ]
+  before_action :set_group, only: %i[ show edit update ]
 
   # GET /groups or /groups.json
   def index
@@ -44,16 +44,6 @@ class GroupsController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /groups/1 or /groups/1.json
-  def destroy
-    @group.destroy
-
-    respond_to do |format|
-      format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
