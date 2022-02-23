@@ -22,11 +22,11 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-    group = Group.find(user_params[:selected_group_id])
 
     respond_to do |format|
       if @user.save
-        @user.groups << group
+        @user.groups << Group.find(user_params[:selected_group_id]) unless user_params[:selected_group_id].empty?
+
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
@@ -38,11 +38,10 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    group = Group.find(user_params[:selected_group_id])
-
     respond_to do |format|
       if @user.update(user_params)
-        @user.groups << group
+        @user.groups << Group.find(user_params[:selected_group_id]) unless user_params[:selected_group_id].empty?
+
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
