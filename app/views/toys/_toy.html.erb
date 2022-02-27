@@ -7,6 +7,13 @@
     <%= link_to Store.find(toy.selected_store_id).name, store_path(Store.find(toy.selected_store_id)) %>
   <% end %>
   </td>
+  <td>
+  <% if toy.selected_maker_id.nil? %>
+    未設定
+  <% else %>
+    <%= link_to Maker.find(toy.selected_maker_id).name, maker_path(Maker.find(toy.selected_maker_id)) %>
+  <% end %>
+  </td>
   <td><%= link_to "Show", toy %></td>
   <td><%= link_to 'Edit', edit_toy_path(toy) %></td>
   <td><%= link_to 'Destroy', toy_path(toy), method: :delete, data: { confirm: 'Are you sure?' } %></td>
