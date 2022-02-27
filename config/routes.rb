@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'members/index'
+  get 'members/update'
   resources :makers
   resources :stores
   resources :toys
