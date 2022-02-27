@@ -1,7 +1,13 @@
-<div id="<%= dom_id toy %>">
-  <p>
-    <strong>Buyable:</strong>
-    <%= toy.buyable_id %>
-  </p>
-
-</div>
+<tr>
+  <td><%= toy.name %></td>
+  <td>
+  <% if toy.selected_store_id.nil? %>
+    未設定
+  <% else %>
+    <%= link_to Store.find(toy.selected_store_id).name, store_path(Store.find(toy.selected_store_id)) %>
+  <% end %>
+  </td>
+  <td><%= link_to "Show", toy %></td>
+  <td><%= link_to 'Edit', edit_toy_path(toy) %></td>
+  <td><%= link_to 'Destroy', toy_path(toy), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
