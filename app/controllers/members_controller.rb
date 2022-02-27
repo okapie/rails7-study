@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  def index
+  def show
   end
 
   def update

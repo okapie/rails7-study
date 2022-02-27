@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  get 'members/index'
-  get 'members/update'
+  # get 'members/index'
+  # get 'members/update'
   resources :makers
   resources :stores
   resources :toys
   resources :groups
+  resource :member
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   get '/logout',  to: 'sessions#logout'
