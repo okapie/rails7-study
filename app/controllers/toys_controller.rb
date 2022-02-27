@@ -40,7 +40,7 @@ class ToysController < ApplicationController
   def update
     respond_to do |format|
       if @toy.update(toy_params)
-        @toy.stores << Store.find(toy_params[:selected_store_id]) unless toy_params[:selected_store_id].empty?
+        Store.find(toy_params[:selected_store_id]).toys << @toy unless toy_params[:selected_store_id].empty?
 
         format.html { redirect_to toy_url(@toy), notice: "Toy was successfully updated." }
         format.json { render :show, status: :ok, location: @toy }
