@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :stores
   resources :toys
   resources :groups
-  resource :member
+
+  # Redirect after login gives `member.{user_id}` path. As a solution, false is set to format option.
+  resource :member, format: false
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   get '/logout',  to: 'sessions#logout'
