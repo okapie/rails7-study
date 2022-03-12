@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :favorites
   # get 'members/index'
   # get 'members/update'
   resources :makers
