@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_12_011254) do
+ActiveRecord::Schema.define(version: 2022_03_13_123433) do
 
   create_table "favorites", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "member_id", null: false
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 2022_03_12_011254) do
     t.string "store_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "toy_id"
     t.index ["member_id"], name: "index_favorites_on_member_id"
+    t.index ["toy_id"], name: "index_favorites_on_toy_id"
   end
 
   create_table "groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -74,6 +76,7 @@ ActiveRecord::Schema.define(version: 2022_03_12_011254) do
   end
 
   add_foreign_key "favorites", "members"
+  add_foreign_key "favorites", "toys"
   add_foreign_key "groups", "users"
   add_foreign_key "members", "users"
 end
