@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   # get 'members/update'
   resources :makers
   resources :stores
-  resources :toys
+  # resources :toys
+  resources :toys do
+    get :bookmark, on: :member
+  end
   resources :groups
 
   # Redirect after login gives `member.{user_id}` path. As a solution, false is set to format option.

@@ -6,6 +6,24 @@ class ToysController < ApplicationController
     @toys = Toy.all
   end
 
+  def bookmark
+    t = Toy.find(params[:id])
+    m = Maker.find(t.selected_maker_id)
+    s = Store.find(t.selected_store_id)
+
+    member = Member.find_by(user_id: current_user.id)
+
+    if member.present?
+      member.favorites.create(
+        member_id: m.id,
+        toy_maker_name: m.name,
+        toy_name: t.name,
+        store_maker_name: m.name,
+        store_name: s.name
+      )
+    end
+  end
+
   # GET /toys/1 or /toys/1.json
   def show
   end

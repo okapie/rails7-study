@@ -1,4 +1,4 @@
 class Favorite < ApplicationRecord
   belongs_to :member
-  belongs_to :toy
+  belongs_to :toy, optional: true
 end
