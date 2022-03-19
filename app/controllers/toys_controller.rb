@@ -1,6 +1,6 @@
 class ToysController < ApplicationController
   before_action :set_toy, only: %i[ show edit update destroy ]
-  before_action :set_current_member, only: [:bookmark]
+  before_action :set_current_member, only: [:bookmark, :remove_bookmark]
 
   # GET /toys or /toys.json
   def index
@@ -13,7 +13,8 @@ class ToysController < ApplicationController
     s = Store.find(t.selected_store_id)
 
     if @member.present?
-      @member.favorites.create(
+      @favorites.create(
+        toy_id: t.id,
         member_id: m.id,
         toy_maker_name: m.name,
         toy_name: t.name,
@@ -21,6 +22,10 @@ class ToysController < ApplicationController
         store_name: s.name
       )
     end
+  end
+
+  def remove_bookmark
+    @favorites.find_by(toy_id: params[:id]).destroy
   end
 
   # GET /toys/1 or /toys/1.json
@@ -88,6 +93,7 @@ class ToysController < ApplicationController
 
     def set_current_member
       @member = Member.find_by(user_id: current_user.id)
+      @favorites = @member.favorites
     end
 
     # Only allow a list of trusted parameters through.

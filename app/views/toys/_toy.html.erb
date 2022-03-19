@@ -14,7 +14,13 @@
     <%= link_to Maker.find(toy.selected_maker_id).name, maker_path(Maker.find(toy.selected_maker_id)) %>
   <% end %>
   </td>
-  <td><%= link_to "Bookmark", bookmark_toy_path(toy) %></td>
+  <td>
+    <% if Favorite.find_by(toy_id: toy.id).present? %>
+      <%= link_to "Remove Bookmark", remove_bookmark_toy_path(toy) %>
+    <% else %>
+      <%= link_to "Bookmark", bookmark_toy_path(toy) %>
+    <% end %>
+  </td>
   <td><%= link_to "Show", toy %></td>
   <td><%= link_to 'Edit', edit_toy_path(toy) %></td>
   <td><%= link_to 'Destroy', toy_path(toy), method: :delete, data: { confirm: 'Are you sure?' } %></td>

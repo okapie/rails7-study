@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # resources :toys
   resources :toys do
     get :bookmark, on: :member
+    get :remove_bookmark, on: :member
   end
   resources :groups
 
