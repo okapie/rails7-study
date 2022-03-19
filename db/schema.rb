@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_13_123433) do
+ActiveRecord::Schema.define(version: 2022_03_19_015425) do
 
   create_table "favorites", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "member_id", null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2022_03_13_123433) do
     t.string "name"
     t.integer "selected_maker_id"
     t.index ["buyable_type", "buyable_id"], name: "index_toys_on_buyable"
+    t.index ["name"], name: "index_toys_on_name", unique: true
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
