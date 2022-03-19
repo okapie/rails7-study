@@ -3,6 +3,8 @@ class MembersController < ApplicationController
     unless logged_in?
       redirect_to login_url
     end
+
+    @favorites = Favorite.all
   end
 
   def update
