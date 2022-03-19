@@ -1,5 +1,6 @@
 class ToysController < ApplicationController
   before_action :set_toy, only: %i[ show edit update destroy ]
+  before_action :set_current_member, only: [:bookmark]
 
   # GET /toys or /toys.json
   def index
@@ -11,10 +12,8 @@ class ToysController < ApplicationController
     m = Maker.find(t.selected_maker_id)
     s = Store.find(t.selected_store_id)
 
-    member = Member.find_by(user_id: current_user.id)
-
-    if member.present?
-      member.favorites.create(
+    if @member.present?
+      @member.favorites.create(
         member_id: m.id,
         toy_maker_name: m.name,
         toy_name: t.name,
@@ -85,6 +84,10 @@ class ToysController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_toy
       @toy = Toy.find(params[:id])
+    end
+
+    def set_current_member
+      @member = Member.find_by(user_id: current_user.id)
     end
 
     # Only allow a list of trusted parameters through.
