@@ -1,10 +1,3 @@
-class ToyMaker
-  attr_accessor :toy_maker, :store_name
-  def initialize(toy_maker, store_name)
-    @toy_maker, @store_name = toy_maker, store_name
-  end
-end
-
 class Favorite < ApplicationRecord
   belongs_to :member
   belongs_to :toy, optional: true
