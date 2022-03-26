@@ -1,6 +1,6 @@
 class ToysController < ApplicationController
   before_action :set_toy, only: %i[ show edit update destroy ]
-  before_action :set_current_member, only: [:bookmark, :remove_bookmark]
+  before_action :set_current_member, only: [:bookmark, :remove_bookmark, :update]
 
   # GET /toys or /toys.json
   def index
@@ -15,7 +15,7 @@ class ToysController < ApplicationController
     if @member.present?
       @favorites.create(
         toy_id: t.id,
-        member_id: m.id,
+        member_id: @member.id,
         toy_maker_name: m.name,
         toy_name: t.name,
         store_maker_name: m.name,
@@ -63,8 +63,24 @@ class ToysController < ApplicationController
   def update
     respond_to do |format|
       if @toy.update(toy_params)
-        Store.find(toy_params[:selected_store_id]).toys << @toy unless toy_params[:selected_store_id].empty?
-        Maker.find(toy_params[:selected_maker_id]).toys << @toy unless toy_params[:selected_maker_id].empty?
+        s = Store.find(toy_params[:selected_store_id])
+        m = Maker.find(toy_params[:selected_maker_id])
+
+        s.toys << @toy unless toy_params[:selected_store_id].empty?
+        m.toys << @toy unless toy_params[:selected_maker_id].empty?
+
+        favorite = Favorite.find_by(toy_name: @toy.name)
+
+        if @member.present? and favorite.present?
+          favorite.update!(
+            toy_id: @toy.id,
+            member_id: @member.id,
+            toy_maker_name: m.name,
+            toy_name: @toy.name,
+            store_maker_name: m.name,
+            store_name: s.name
+          )
+        end
 
         format.html { redirect_to toy_url(@toy), notice: "Toy was successfully updated." }
         format.json { render :show, status: :ok, location: @toy }
