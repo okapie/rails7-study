@@ -4,7 +4,8 @@ class MembersController < ApplicationController
       redirect_to login_url
     end
 
-    @favorites = Favorite.all
+    @favorites_by_earliest_created = Favorite.all.by_earliest_created
+    @favorites_by_store_name_only_store1 = Favorite.all.by_store_name_only_store1
   end
 
   def update

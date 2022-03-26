@@ -4,6 +4,7 @@
 
 <hr>
 <h3>Your Favorites List</h3>
+<h4>Sort by created_at in ascending order:</h4>
 <div id="favorites">
   <table border="1">
     <thead>
@@ -12,7 +13,26 @@
         <th>Store</th>
       </tr>
       <tbody>
-        <% @favorites.each do |favorite| %>
+        <% @favorites_by_earliest_created.each do |favorite| %>
+          <tr>
+            <td><%= favorite.toy_name %></td>
+            <td><%= favorite.store_name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </thead>
+  </table>
+</div>
+<h4>Sort by name only "Store1":</h4>
+<div id="favorites">
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Store</th>
+      </tr>
+      <tbody>
+        <% @favorites_by_store_name_only_store1.each do |favorite| %>
           <tr>
             <td><%= favorite.toy_name %></td>
             <td><%= favorite.store_name %></td>

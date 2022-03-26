@@ -8,4 +8,5 @@ class Favorite < ApplicationRecord
     mapping: [%w(store_maker_name toy_maker_name), %w(store_name store_name)]
 
   scope :by_earliest_created, -> { order(created_at: :asc) }
+  scope :by_store_name_only_store1, -> { where(store_name: "Store1") }
 end
