@@ -9,14 +9,16 @@
   <table border="1">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Store</th>
+        <th>Toy Name</th>
+        <th>Store Name</th>
+        <th>Toy Maker Name</th>
       </tr>
       <tbody>
         <% @favorites_by_earliest_created.each do |favorite| %>
           <tr>
             <td><%= favorite.toy_name %></td>
             <td><%= favorite.store_name %></td>
+            <td><%= favorite.toy_maker_name %></td>
           </tr>
         <% end %>
       </tbody>
@@ -28,14 +30,16 @@
   <table border="1">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Store</th>
+        <th>Toy Name</th>
+        <th>Store Name</th>
+        <th>Store Maker Name</th>
       </tr>
       <tbody>
         <% @favorites_by_store_maker_name_unset.each do |favorite| %>
           <tr>
             <td><%= favorite.toy_name %></td>
             <td><%= favorite.store_name %></td>
+            <td><%= favorite.store_maker_name %></td>
           </tr>
         <% end %>
       </tbody>
