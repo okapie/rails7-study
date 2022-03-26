@@ -9,17 +9,17 @@ class ToysController < ApplicationController
 
   def bookmark
     t = Toy.find(params[:id])
-    m = Maker.find(t.selected_maker_id)
-    s = Store.find(t.selected_store_id)
+    m = Maker.find(t.selected_maker_id) unless t.selected_maker_id.nil?
+    s = Store.find(t.selected_store_id) unless t.selected_store_id.nil?
 
     if @member.present?
       @favorites.create(
         toy_id: t.id,
         member_id: @member.id,
-        toy_maker_name: m.name,
+        toy_maker_name: m ? m.name : "未設定",
         toy_name: t.name,
-        store_maker_name: m.name,
-        store_name: s.name
+        store_maker_name: m ? m.name : "未設定",
+        store_name: s ? s.name : "未設定"
       )
     end
   end
