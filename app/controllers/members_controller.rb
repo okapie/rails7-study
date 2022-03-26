@@ -5,7 +5,7 @@ class MembersController < ApplicationController
     end
 
     @favorites_by_earliest_created = Favorite.all.by_earliest_created
-    @favorites_by_store_name_only_store1 = Favorite.all.by_store_name_only_store1
+    @favorites_by_store_maker_name_unset = Favorite.all.by_store_maker_name_not_unset(:store_maker_name)
   end
 
   def update
