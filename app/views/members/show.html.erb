@@ -3,21 +3,20 @@
 <p>Hello, <%= current_user.name %></p>
 
 <hr>
-<h3>Your Favorites List</h3>
-<h4>Sort by created_at in ascending order:</h4>
-<div id="favorites">
+<h3>Favorites List</h3>
+<span>※ Sort by created_at in ascending order excluding "未設定".</span>
+<h4>Toys</h4>
+<div>
   <table border="1">
     <thead>
       <tr>
         <th>Toy Name</th>
-        <th>Store Name</th>
         <th>Toy Maker Name</th>
       </tr>
       <tbody>
-        <% @favorites_by_earliest_created.each do |favorite| %>
+        <% @favorites_by_toy_maker_name_unset.each do |favorite| %>
           <tr>
             <td><%= favorite.toy_name %></td>
-            <td><%= favorite.store_name %></td>
             <td><%= favorite.toy_maker_name %></td>
           </tr>
         <% end %>
@@ -25,21 +24,19 @@
     </thead>
   </table>
 </div>
-<h4>Sort by Store Maker Name (excluding "未設定"):</h4>
-<div id="favorites">
+<h4>Stores</h4>
+<div>
   <table border="1">
     <thead>
       <tr>
-        <th>Toy Name</th>
         <th>Store Name</th>
         <th>Store Maker Name</th>
       </tr>
       <tbody>
         <% @favorites_by_store_maker_name_unset.each do |favorite| %>
           <tr>
-            <td><%= favorite.toy_name %></td>
-            <td><%= favorite.store_name %></td>
-            <td><%= favorite.store_maker_name %></td>
+            <td><%= favorite.store_toy_maker.store_name %></td>
+            <td><%= favorite.store_toy_maker.toy_maker %></td>
           </tr>
         <% end %>
       </tbody>
