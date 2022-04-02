@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'sessions#new'
+
   resources :favorites
   # get 'members/index'
   # get 'members/update'
