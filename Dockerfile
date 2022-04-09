@@ -1,5 +1,9 @@
 FROM ruby:3.1.0
-RUN apt-get update -qq && apt-get install -y nodejs mariadb-client
+RUN apt-get dist-upgrade && apt-get update -qq && apt-get install -y\
+  build-essential \
+  nodejs \
+  mariadb-client \
+  graphviz
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
